@@ -5,8 +5,4 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
-  def conversation_thread_with(usr)
-    Conversation::Thread.create
-  end
 end

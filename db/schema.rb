@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151223083821) do
+ActiveRecord::Schema.define(version: 20151223091135) do
 
   create_table "conversation_messages", force: :cascade do |t|
     t.integer  "thread_id"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20151223083821) do
 
   add_index "conversation_messages", ["author_id"], name: "index_conversation_messages_on_author_id"
   add_index "conversation_messages", ["thread_id"], name: "index_conversation_messages_on_thread_id"
+
+  create_table "conversation_thread_subscriptions", force: :cascade do |t|
+    t.integer  "thread_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "conversation_thread_subscriptions", ["thread_id"], name: "index_conversation_thread_subscriptions_on_thread_id"
+  add_index "conversation_thread_subscriptions", ["user_id"], name: "index_conversation_thread_subscriptions_on_user_id"
 
   create_table "conversation_threads", force: :cascade do |t|
     t.datetime "created_at", null: false
