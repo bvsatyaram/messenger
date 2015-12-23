@@ -14,6 +14,7 @@ class Conversation::Thread < ActiveRecord::Base
       thread = Conversation::Thread.new
       thread.subscribe(usr1)
       thread.subscribe(usr2)
+      thread.save!
       return thread
     end
   end
@@ -28,5 +29,15 @@ class Conversation::Thread < ActiveRecord::Base
 
   def other_participant(usr)
     self.subscriptions.where.not(user_id: usr.id).first.user
+  end
+
+  def messages_for_user(usr)
+    msgs = self.messages
+    ids_to_display = Conversation::MessageSubscription.where(
+      user_id: usr.id,
+      message_id: msgs.collect(&:id)
+    ).pluck(:message_id)
+
+    return msgs.select{|msg| ids_to_display.include?(msg.id)}
   end
 end

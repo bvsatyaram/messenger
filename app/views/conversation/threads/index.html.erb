@@ -1,7 +1,9 @@
+<% if @threads.any? %>
+  <%= link_to "New Conversation", new_conversation_message_path, class: "btn btn-primary pull-right" %>
+<% end %>
 <h1>My Conversations</h1>
 
 <% if @threads.any? %>
-  <%= link_to "New Conversation", new_conversation_message_path, class: "btn btn-primary pull-right" %>
   <div class="list-group">
     <%= render @threads %>
   </div>

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :conversation do
     resources :threads, only: [:index, :show]
     resources :messages, only: [:new, :create]
+    resources :message_subscriptions, only: [:destroy]
   end
 
   devise_for :users

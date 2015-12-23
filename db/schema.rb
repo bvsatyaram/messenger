@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151223091135) do
+ActiveRecord::Schema.define(version: 20151223103356) do
+
+  create_table "conversation_message_subscriptions", force: :cascade do |t|
+    t.integer  "message_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "conversation_message_subscriptions", ["message_id"], name: "index_conversation_message_subscriptions_on_message_id"
+  add_index "conversation_message_subscriptions", ["user_id"], name: "index_conversation_message_subscriptions_on_user_id"
 
   create_table "conversation_messages", force: :cascade do |t|
     t.integer  "thread_id"

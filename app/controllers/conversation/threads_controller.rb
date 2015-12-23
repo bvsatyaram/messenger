@@ -5,6 +5,6 @@ class Conversation::ThreadsController < ApplicationController
 
   def show
     @thread = Conversation::Thread.find(params[:id])
-    @messages = @thread.messages
+    @messages = @thread.messages_for_user(current_user)
   end
 end

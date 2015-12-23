@@ -1,4 +1,4 @@
 <h1>Conversation with <%= @thread.other_participant(current_user).email %></h1>
-<div class="list-group">
+<div id="messages" class="list-group">
   <%= render @messages %>
 </div>
