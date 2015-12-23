@@ -17,6 +17,7 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'letter_opener'
 end
 
 group :production do
@@ -26,3 +27,6 @@ end
 
 gem 'bootstrap-sass'
 gem 'bootswatch-rails'
+gem 'simple_form'
+gem 'devise'
+gem 'simple_token_authentication'
