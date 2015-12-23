@@ -2,11 +2,9 @@
 
 <% if @threads.any? %>
   <%= link_to "New Conversation", new_conversation_message_path, class: "btn btn-primary pull-right" %>
-  <ul>
-    <% @threads.each do |thread| %>
-      <li><%= thread.inspect %></li>
-    <% end %>
-  </ul>
+  <div class="list-group">
+    <%= render @threads %>
+  </div>
 <% else %>
   <div class="jumbotron">
     <h1>It's Boring!</h1>

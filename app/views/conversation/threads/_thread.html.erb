@@ -1,0 +1,4 @@
+<%= link_to conversation_thread_path(thread), class: "list-group-item" do %>
+  <h4 class="list-group-item-heading"><%= thread.other_participant(current_user).email %></h4>
+  <p class="list-group-item-text"><%= thread.excerpt %></p>
+<% end %>

@@ -21,4 +21,12 @@ class Conversation::Thread < ActiveRecord::Base
   def subscribe(usr)
     self.subscriptions.find_or_initialize_by(user_id: usr.id)
   end
+
+  def excerpt
+    self.messages.last.content
+  end
+
+  def other_participant(usr)
+    self.subscriptions.where.not(user_id: usr.id).first.user
+  end
 end

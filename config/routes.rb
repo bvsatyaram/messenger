@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :conversation do
-    resources :threads, only: [:index]
+    resources :threads, only: [:index, :show]
     resources :messages, only: [:new, :create]
   end
 
