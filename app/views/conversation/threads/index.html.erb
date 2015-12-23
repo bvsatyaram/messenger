@@ -1,0 +1,15 @@
+<h1>My Conversations</h1>
+
+<% if @threads.any? %>
+  <ul>
+    <% @threads.each do |thread| %>
+      <li><%= thread.inspect %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <div class="jumbotron">
+    <h1>It's Boring!</h1>
+    <p>Why don't you start a new conversation?</p>
+    <p><%= link_to "Start a new Conversation", new_conversation_message_path, class: "btn btn-primary btn-lg" %></p>
+  </div>
+<% end %>

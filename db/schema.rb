@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151223063950) do
+ActiveRecord::Schema.define(version: 20151223083821) do
+
+  create_table "conversation_messages", force: :cascade do |t|
+    t.integer  "thread_id"
+    t.integer  "author_id"
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "conversation_messages", ["author_id"], name: "index_conversation_messages_on_author_id"
+  add_index "conversation_messages", ["thread_id"], name: "index_conversation_messages_on_thread_id"
+
+  create_table "conversation_threads", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

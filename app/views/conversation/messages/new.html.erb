@@ -1,0 +1,6 @@
+<h1>Send a new Message</h1>
+<%= simple_form_for @message, html: { novalidate: false } do |f| %>
+  <%= f.input :email, type: "email" %>
+  <%= f.input :content %>
+  <%= f.submit "Send Message", class: "btn btn-primary" %>
+<% end %>
