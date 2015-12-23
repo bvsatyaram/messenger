@@ -6,6 +6,7 @@ class Conversation::Message < ActiveRecord::Base
   attr_accessor :email
 
   after_create :subscribe_users
+  after_destroy :destroy_thread_if_orphan
 
   def subscription_of(usr)
     self.subscriptions.find_by(user_id: usr.id)
@@ -20,5 +21,9 @@ private
     self.thread.subscriptions.collect(&:user).each do |usr|
       self.subscribe(usr)
     end
+  end
+
+  def destroy_thread_if_orphan
+    self.thread.destroy! if self.thread.reload.messages.count == 0
   end
 end
