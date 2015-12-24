@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      namespace :conversation do
+        resources :threads, only: [:index, :show], controller: "/conversation/threads"
+        resources :messages, only: [:new, :create], controller: "/conversation/messages"
+        resources :message_subscriptions, only: [:destroy], controller: "/conversation/message_subscriptions"
+      end
+    end
+  end
+
   namespace :conversation do
     resources :threads, only: [:index, :show]
     resources :messages, only: [:new, :create]
